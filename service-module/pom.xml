@@ -11,12 +11,19 @@
 
     <artifactId>service-module</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>ru.kazimir.bortnik</groupId>
             <artifactId>data-module</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
         </dependency>
     </dependencies>
 
