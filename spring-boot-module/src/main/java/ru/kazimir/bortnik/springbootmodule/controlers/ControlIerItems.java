@@ -11,9 +11,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.kazimir.bortnik.springbootmodule.repository.model.enums.StatusItems;
-import ru.kazimir.bortnik.springbootmodule.servicedata.ItemService;
-import ru.kazimir.bortnik.springbootmodule.servicedata.model.ItemDTO;
+import ru.kazimir.bortnik.repository.model.enums.StatusItems;
+import ru.kazimir.bortnik.servicedata.ItemService;
+import ru.kazimir.bortnik.servicedata.model.ItemDTO;
 
 import javax.validation.Valid;
 import java.util.List;

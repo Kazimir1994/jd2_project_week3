@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({
         @PropertySource("classpath:configDatabase.properties")
 })
-@ComponentScan(basePackages = {"ru.kazimir.bortnik"})
 public class AppConfig {
 
 }

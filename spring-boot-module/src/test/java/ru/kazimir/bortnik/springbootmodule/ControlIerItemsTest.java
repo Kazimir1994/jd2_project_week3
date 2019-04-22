@@ -11,8 +11,8 @@ import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import ru.kazimir.bortnik.springbootmodule.controlers.ControlIerItems;
-import ru.kazimir.bortnik.springbootmodule.servicedata.ItemService;
-import ru.kazimir.bortnik.springbootmodule.servicedata.model.ItemDTO;
+import ru.kazimir.bortnik.servicedata.ItemService;
+import ru.kazimir.bortnik.servicedata.model.ItemDTO;
 
 import java.util.Arrays;
 import java.util.List;
