@@ -30,7 +30,7 @@ public class ControlIerItems {
     }
 
 
-    @GetMapping("/home")
+    @GetMapping("/items")
     public String showAllItems(ItemDTO itemDTO, Model model, BindingResult results) {
         List<ItemDTO> items = itemService.getItems();
         model.addAttribute("items", items);
@@ -46,21 +46,21 @@ public class ControlIerItems {
     @PostMapping("/updateStatusItems")
     public String updateStatusItems(@Valid ItemDTO itemDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/home";
+            return "redirect:/items";
         }
         logger.info(String.format("Update Item {Id=%s, Status=%s}", itemDTO.getId(), itemDTO.getStatus()));
         itemService.update(itemDTO.getId(), itemDTO.getStatus());
-        return "redirect:/home";
+        return "redirect:/items";
     }
 
     @PostMapping("/createItems")
     public String createItem(@Valid ItemDTO itemDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", bindingResult.getAllErrors());
-            return "redirect:/home";
+            return "redirect:/items";
         }
         itemService.add(itemDTO);
         logger.info(String.format("Create Item {name= %s, Description= %s}", itemDTO.getName(), itemDTO.getDescription()));
-        return "redirect:/home";
+        return "redirect:/items";
     }
 }
