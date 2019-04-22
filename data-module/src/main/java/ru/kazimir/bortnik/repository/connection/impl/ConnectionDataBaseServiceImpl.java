@@ -4,10 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.kazimir.bortnik.repository.connection.ConnectionDataBseService;
 import ru.kazimir.bortnik.repository.constant.ErrorMessagesRepository;
 import ru.kazimir.bortnik.repository.exceptions.ConnectionDataBaseExceptions;
 import ru.kazimir.bortnik.repository.properties.DatabaseProperties;
-import ru.kazimir.bortnik.repository.connection.ConnectionDataBseService;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
@@ -31,7 +31,6 @@ public class ConnectionDataBaseServiceImpl implements ConnectionDataBseService {
             DatabaseProperties databaseProperties) {
         this.databaseProperties = databaseProperties;
         try {
-            System.out.println(databaseProperties.getDatabaseDriverName());
             Class.forName(databaseProperties.getDatabaseDriverName());
         } catch (ClassNotFoundException e) {
             logger.error(e.getMessage(), e);

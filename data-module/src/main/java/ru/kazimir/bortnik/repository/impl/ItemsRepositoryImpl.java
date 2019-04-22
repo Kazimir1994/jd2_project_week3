@@ -94,6 +94,7 @@ public class ItemsRepositoryImpl implements ItemsRepository {
         ADD("INSERT INTO Items(name, unique_number, description,status) VALUES (?, ?, ?, ?)");
 
         public String QUERY;
+
         QueryTypes(String QUERY) {
             this.QUERY = QUERY;
         }

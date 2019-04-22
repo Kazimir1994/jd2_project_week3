@@ -1,8 +1,8 @@
 package ru.kazimir.bortnik.servicedata.converter.impl;
 
 import org.springframework.stereotype.Component;
-import ru.kazimir.bortnik.servicedata.converter.CreateItemConverter;
 import ru.kazimir.bortnik.repository.model.Item;
+import ru.kazimir.bortnik.servicedata.converter.CreateItemConverter;
 import ru.kazimir.bortnik.servicedata.model.ItemDTO;
 
 @Component
