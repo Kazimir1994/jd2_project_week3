@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Fill in the fields and click "Create"</h5>
+        </div>
+        <div class="card-body">
+            <form action="#" th:action="@{/createItems}" th:object="${itemDTO}" method="post">
+                <div class="form-group">
+                    <label for="label1">Enter item name</label>
+                    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+                    <input type="text" class="form-control" id="label1" placeholder="Enter item name"
+                           th:field="*{name}">
+                </div>
+                <div class="form-group">
+                    <label for="label3">Enter item description</label>
+                    <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</p>
+                    <input type="text" class="form-control" id="label3" placeholder="Enter item description"
+                           th:field="*{description}">
+                </div>
+                <button type="submit" class="btn btn-success">Create item</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>UniqueNumber</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item :${items}">
+                    <form action="#" th:action="@{/updateStatusItems}" th:object="${itemDTO}" method="post">
+                        <td class="font-weight-bold" th:text="${item.id}"></td>
+                        <td th:text="${item.name}"></td>
+                        <td th:text="${item.description}"></td>
+                        <td th:text="${item.uniqueNumber}"></td>
+                        <td>
+                            <label><input type="value" th:value="${item.id}" th:name="id" hidden/></label>
+
+                            <label>
+                                <select name="status" class="browser-default custom-select">
+                                    <option th:each="st : ${statusItems}" th:value="${st}"
+                                            th:text="${st}" th:selected="${#strings.equals(st,item.status)}"></option>
+                                </select>
+                            </label>
+
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+            <!--<div class="card">-->
+                <!--<ul class="nav nav-pills">-->
+                    <!--<li class="nav-item"-->
+                        <!--th:each="i : ${#numbers.sequence( 0,numberPage)}">-->
+                        <!--<a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"-->
+                           <!--th:classappend="${currentPage}==${i}?'active':''"> </a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
