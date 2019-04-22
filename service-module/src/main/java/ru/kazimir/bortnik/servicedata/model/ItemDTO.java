@@ -1,16 +1,15 @@
 package ru.kazimir.bortnik.servicedata.model;
 
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ItemDTO {
 
     private Long id;
-    @NotNull
+
     @Size(min = 1, max = 40)
     private String name;
-    @NotNull
+
     @Size(min = 1, max = 40)
     private String description;
     private String uniqueNumber;
