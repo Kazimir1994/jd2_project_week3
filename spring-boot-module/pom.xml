@@ -36,7 +36,7 @@
         <dependency>
             <groupId>ru.kazimir.bortnik</groupId>
             <artifactId>service-module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${service-module.version}</version>
         </dependency>
     </dependencies>
 

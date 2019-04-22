@@ -37,17 +37,6 @@ public class ItemsRepositoryImpl implements ItemsRepository {
         }
     }
 
-    private Item getItemID(ResultSet resultSet, Item item) {
-        try {
-            if (resultSet.next()) {
-                item.setId(resultSet.getLong(1));
-            }
-            return item;
-        } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
-            throw new ItemRepositoryException(e);
-        }
-    }
 
     @Override
     public List<Item> getAllItems(Connection connection) {
@@ -65,16 +54,6 @@ public class ItemsRepositoryImpl implements ItemsRepository {
         return itemList;
     }
 
-    private Item assemblyOfObjects(ResultSet resultSet) throws SQLException {
-        Item item = new Item();
-        item.setId(resultSet.getLong("id"));
-        item.setName(resultSet.getString("name"));
-        item.setStatus(resultSet.getString("status"));
-        item.setUniqueNumber(resultSet.getString("unique_number"));
-        item.setDescription(resultSet.getString("description"));
-        return item;
-    }
-
     @Override
     public int update(Long id, String status, Connection connection) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueryTypes.UPDATE_BY_ID.QUERY)) {
@@ -87,6 +66,27 @@ public class ItemsRepositoryImpl implements ItemsRepository {
         }
     }
 
+    private Item assemblyOfObjects(ResultSet resultSet) throws SQLException {
+        Item item = new Item();
+        item.setId(resultSet.getLong("id"));
+        item.setName(resultSet.getString("name"));
+        item.setStatus(resultSet.getString("status"));
+        item.setUniqueNumber(resultSet.getString("unique_number"));
+        item.setDescription(resultSet.getString("description"));
+        return item;
+    }
+
+    private Item getItemID(ResultSet resultSet, Item item) {
+        try {
+            if (resultSet.next()) {
+                item.setId(resultSet.getLong(1));
+            }
+            return item;
+        } catch (SQLException e) {
+            logger.error(e.getMessage(), e);
+            throw new ItemRepositoryException(e);
+        }
+    }
 
     private enum QueryTypes {
         UPDATE_BY_ID("UPDATE Items SET status=? WHERE id=?"),
@@ -94,10 +94,8 @@ public class ItemsRepositoryImpl implements ItemsRepository {
         ADD("INSERT INTO Items(name, unique_number, description,status) VALUES (?, ?, ?, ?)");
 
         public String QUERY;
-
         QueryTypes(String QUERY) {
             this.QUERY = QUERY;
         }
-
     }
 }

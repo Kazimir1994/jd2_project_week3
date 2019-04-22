@@ -33,7 +33,6 @@ public class Advice {
 
     @AfterReturning(value = "createStatusPointCut()", returning = "savedItem")
     public void logAddingItem(JoinPoint joinPoint, Item savedItem) {
-
         AuditItem auditItem = new AuditItem();
         auditItem.setAction("ADDED");
         auditItem.setDate(new Timestamp(System.currentTimeMillis()));

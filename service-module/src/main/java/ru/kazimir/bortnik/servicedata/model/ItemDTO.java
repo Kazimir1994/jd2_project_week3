@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ItemDTO {
-    @NotNull
+
     private Long id;
     @NotNull
     @Size(min = 1, max = 40)
@@ -14,7 +14,6 @@ public class ItemDTO {
     @Size(min = 1, max = 40)
     private String description;
     private String uniqueNumber;
-    @NotNull
     private String status;
 
     public ItemDTO(String name, String description, String uniqueNumber, String status, Long id) {
@@ -26,9 +25,7 @@ public class ItemDTO {
     }
 
     public ItemDTO() {
-
     }
-
 
     public String getDescription() {
         return description;

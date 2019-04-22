@@ -49,7 +49,7 @@ public class ConnectionDataBaseServiceImpl implements ConnectionDataBseService {
             throw new ConnectionDataBaseExceptions(ErrorMessagesRepository.NO_CONNECTION, e);
         }
     }
-
+// транзакция
     @PostConstruct
     public void databaseInitialization() {
         File configurationFile = new File(getClass().getResource("/" + databaseProperties.getDatabaseConfigName()).getPath());

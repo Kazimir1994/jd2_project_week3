@@ -15,7 +15,7 @@
         <dependency>
             <groupId>ru.kazimir.bortnik</groupId>
             <artifactId>data-module</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${repository-module.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
